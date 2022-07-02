@@ -19,10 +19,12 @@ body {
 
 .header-container {
     margin-bottom: 5px;
+    
+
 }
 .header--title {
     margin-top: 15px;
-    font-size: 5vw;
+    font-size: 5vmax;
     font-weight: 1000;
     letter-spacing: 5px;  
     color: white;
@@ -31,10 +33,10 @@ body {
 .lore-container {
    background: white;
    border: 3px solid black;
-   height: 400px;
+   height: 500px;
    width: 350px;
-   min-height: 250px;
-   min-width: 350px;
+   min-height: 75px;
+   min-width: 100px;
    overflow-y: scroll;
 }
 
@@ -45,13 +47,12 @@ body {
 
 .guess-container {
 
-    height: 10%;
-
+    
     margin-top: 15px;
 }
 
 .score--number {
-    font-size: 3vw;
+    font-size: 4vmax;
     margin: 0 100px;
     color: white;
 }
