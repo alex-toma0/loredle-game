@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import {useState} from "react"
+import Header from "./components/Header"
+import LoreBox from "./components/LoreBox"
+import InputGuess from "./components/InputGuess"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+export default function App() {
+
+    function getChamp() {
+        let champs = require("./champs.json")
+        let randIndex = Math.floor(Math.random() * (champs.Name.length + 1))
+        let randParagraph = Math.floor(Math.random() * (champs.Paragraphs[randIndex].length + 1))
+        let champName = champs.Name[randIndex]
+        let champParagraph = champs.Paragraphs[randIndex][randParagraph]
+        
+        while (!champParagraph.includes(champName) || (champParagraph.length > 800  
+                || champParagraph.length < 300)) {
+            randParagraph = Math.floor(Math.random() * (champs.Paragraphs[randIndex].length + 1))
+            champParagraph = champs.Paragraphs[randIndex][randParagraph]
+        }
+    
+        champParagraph = champParagraph.replaceAll(champName, "BLANK")
+        return {
+            paragraph: champParagraph,
+            name: champName,
+        }
+        }
+    const randChamp = getChamp()
+    const [appState, setAppState] = useState(0)
+    function newState() {
+        setAppState(appState + 1)
+    }
+    return (
+        <div className="app-container">
+        <Header/>
+        <LoreBox randomParagraph={randChamp.paragraph} />
+        <InputGuess champName={randChamp.name} newState={newState}/>
+        </div>
+    )
 }
-
-export default App;
