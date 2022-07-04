@@ -19,7 +19,7 @@ export default function App() {
             champParagraph = champs.Paragraphs[randIndex][randParagraph]
         }
     
-        champParagraph = champParagraph.replaceAll(champName, "BLANK")
+        champParagraph = champParagraph.replaceAll(champName, "_____")
         return {
             paragraph: champParagraph,
             name: champName,
